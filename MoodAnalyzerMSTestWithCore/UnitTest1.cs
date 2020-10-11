@@ -17,5 +17,14 @@ namespace MoodAnalyzerMSTestWithCore
             string result = moodAnalyzer.analyseMood();
             Assert.AreEqual(result, expected);
         }
+
+        [TestMethod]
+        [DataRow(null, "HAPPY")]
+        public void TestMethod2(string message, string expected)
+        {
+            moodAnalyzer = new MoodAnalyzer(message);
+            string result = moodAnalyzer.analyseMood();
+            Assert.AreEqual(result, expected);
+        }
     }
 }

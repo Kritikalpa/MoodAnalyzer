@@ -18,14 +18,22 @@ namespace MoodAnalyzerAppWithCore
         }
         public string analyseMood()
         {
-            if (this.message.Contains("Sad", StringComparison.InvariantCultureIgnoreCase))
+            try
             {
-                return "SAD";
+                if (this.message.Contains("Sad", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch (NullReferenceException e)
             {
                 return "HAPPY";
             }
+            
         }
     }
 }
