@@ -8,8 +8,8 @@ namespace MoodAnalyzerAppWithCore
         {
             Console.WriteLine("Welcome to Mood Analyzer App");
 
-            MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-            string mood = moodAnalyzer.analyseMood("I am very Sad");
+            MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am very Sad");
+            string mood = moodAnalyzer.analyseMood();
             Console.WriteLine("Mood : " + mood);
         }
     }

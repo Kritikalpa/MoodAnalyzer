@@ -6,9 +6,19 @@ namespace MoodAnalyzerAppWithCore
 {
     public class MoodAnalyzer
     {
-        public string analyseMood(string message)
+        public string message;
+
+        public MoodAnalyzer()
         {
-            if (message.Contains("Sad", StringComparison.InvariantCultureIgnoreCase))
+            this.message = "I am happy";
+        }
+        public MoodAnalyzer(string message)
+        {
+            this.message = message;
+        }
+        public string analyseMood()
+        {
+            if (this.message.Contains("Sad", StringComparison.InvariantCultureIgnoreCase))
             {
                 return "SAD";
             }
