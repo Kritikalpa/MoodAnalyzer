@@ -20,6 +20,10 @@ namespace MoodAnalyzerAppWithCore
         {
             try
             {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MESSAGE, "Mood should not be Empty");
+                }
                 if (this.message.Contains("Sad", StringComparison.InvariantCultureIgnoreCase))
                 {
                     return "SAD";
@@ -29,9 +33,9 @@ namespace MoodAnalyzerAppWithCore
                     return "HAPPY";
                 }
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                return "HAPPY";
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
             
         }
