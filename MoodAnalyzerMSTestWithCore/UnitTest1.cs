@@ -61,6 +61,10 @@ namespace MoodAnalyzerMSTestWithCore
             
         }
 
+
+        /// <summary>
+        /// TC 4.1-Givens the mood analyzer class name should return mood analyzer object.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyzerClassNameShouldReturnMoodAnalyzerObject()
         {
@@ -69,5 +73,35 @@ namespace MoodAnalyzerMSTestWithCore
             object obj = MoodAnalyzerFactory.createMoodAnalyzer("MoodAnalyzerAppWithCore.MoodAnalyzer", "MoodAnalyzer");
             expected.Equals(obj);
         }
+
+        /// <summary>
+        /// TC 4.2-Givens the mood analyzer class name improper should throw mood analysis exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyzerClassNameImproperShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                object obj = MoodAnalyzerFactory.createMoodAnalyzer("MoodAnalyzerAppWithCore.WrongClassName", "WrongClassName");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Class Not Found", e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenMoodAnalyzerClassNameConstructorImproperShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                object obj = MoodAnalyzerFactory.createMoodAnalyzer("MoodAnalyzerAppWithCore.MoodAnalyzer", "WrongConstructorName");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Constructor is Not Found", e.Message);
+            }
+        }
+
     }
 }
