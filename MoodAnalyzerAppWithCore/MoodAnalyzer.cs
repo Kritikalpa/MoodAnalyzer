@@ -8,10 +8,7 @@ namespace MoodAnalyzerAppWithCore
     {
         public string message;
 
-        public MoodAnalyzer()
-        {
-            this.message = "I am happy";
-        }
+        public MoodAnalyzer() { }
         public MoodAnalyzer(string message)
         {
             this.message = message;

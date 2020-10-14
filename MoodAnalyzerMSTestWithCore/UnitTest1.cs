@@ -60,5 +60,14 @@ namespace MoodAnalyzerMSTestWithCore
             }
             
         }
+
+        [TestMethod]
+        public void GivenMoodAnalyzerClassNameShouldReturnMoodAnalyzerObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyzer(message);
+            object obj = MoodAnalyzerFactory.createMoodAnalyzer("MoodAnalyzerAppWithCore.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
+        }
     }
 }
