@@ -90,6 +90,9 @@ namespace MoodAnalyzerMSTestWithCore
             }
         }
 
+        /// <summary>
+        /// TC 4.3- Givens the mood analyzer class name constructor improper should throw mood analysis exception.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyzerClassNameConstructorImproperShouldThrowMoodAnalysisException()
         {
@@ -103,5 +106,11 @@ namespace MoodAnalyzerMSTestWithCore
             }
         }
 
+        [TestMethod]
+        public void GivenMoodAnalyzerClassNameShouldReturnMoodAnalyzerObjectUsingParameterizedConstructor()
+        {
+            object expected = new MoodAnalyzer("Happy");
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerAppWithCore.MoodAnalyzer", "MoodAnalyzer", "Happy");
+        }
     }
 }
