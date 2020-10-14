@@ -116,5 +116,37 @@ namespace MoodAnalyzerMSTestWithCore
             object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerAppWithCore.MoodAnalyzer", "MoodAnalyzer", "Happy");
             expected.Equals(obj);
         }
+
+        /// <summary>
+        /// TC 5.2- Givens the mood analyzer class name improper should throw mood analysis exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyzerClassNameImproperShouldThrowMoodAnalysisEdxception()
+        {
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerAppWithCore.WrongClassName", "MoodAnalyzer", "Happy");
+            }
+            catch(MoodAnalysisException e)
+            {
+                Assert.AreEqual("Class Not Found", e.Message);
+            }
+        }
+
+        /// <summary>
+        /// TC 5.3- Givens the mood analyzer class constructor improper should throw mood analysis exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyzerClassConstructorImproperShouldThrowMoodAnalysisEdxception()
+        {
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerAppWithCore.MoodAnalyzer", "WrongConstructorName", "Happy");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Constructor is Not Found", e.Message);
+            }
+        }
     }
 }
