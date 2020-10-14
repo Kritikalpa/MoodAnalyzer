@@ -106,11 +106,15 @@ namespace MoodAnalyzerMSTestWithCore
             }
         }
 
+        /// <summary>
+        /// TC 5.1- Givens the mood analyzer class name should return mood analyzer object using parameterized constructor.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyzerClassNameShouldReturnMoodAnalyzerObjectUsingParameterizedConstructor()
         {
             object expected = new MoodAnalyzer("Happy");
             object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerAppWithCore.MoodAnalyzer", "MoodAnalyzer", "Happy");
+            expected.Equals(obj);
         }
     }
 }
