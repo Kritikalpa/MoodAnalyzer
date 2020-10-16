@@ -148,5 +148,52 @@ namespace MoodAnalyzerMSTestWithCore
                 Assert.AreEqual("Constructor is Not Found", e.Message);
             }
         }
+
+
+        /// <summary>
+        /// TC 6.1- Invokes the analyse mood using reflection.
+        /// </summary>
+        [TestMethod]
+        public void InvokeAnalyseMoodUsingReflection()
+        {
+            MoodAnalyzer instance = new MoodAnalyzer("I am Sad");
+            string expected = instance.analyseMood();
+            string result = MoodAnalyzerFactory.invokeAnalyseMood("I am Sad", "analyseMood");
+
+            Assert.AreEqual(result, expected);
+        }
+
+        /// <summary>
+        /// TC 6.2- Givens the improper method should throw mood analysis exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenImproperMethodShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                string result = MoodAnalyzerFactory.invokeAnalyseMood("I am Sad", "wrongMethod");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Method Not Found", e.Message);
+            }    
+        }
+
+        /// <summary>
+        /// TC 6.3- Givens the null message should throw mood analysis exception.
+        /// </summary>
+        [TestMethod]
+        public void GivenNullMessageShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                string result = MoodAnalyzerFactory.invokeAnalyseMood(null, "analyseMood");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Mood should not be null", e.Message);
+            }
+
+        }
     }
 }
